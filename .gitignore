@@ -1,0 +1,8 @@
+#dependencies
+/node_modules
+
+#dotenv
+.env
+
+#image folder
+/uploads
