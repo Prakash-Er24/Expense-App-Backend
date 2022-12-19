@@ -71,7 +71,7 @@ module.exports.data = (req,res)=>{
 
 //Update profile picture
 
-module.exports.updateImage = (req,res)=>{
+module.exports.update = (req,res)=>{
     const {_id} = req.tokenData
     const imageUrl = req.file.path
 

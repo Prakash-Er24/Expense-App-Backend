@@ -1,6 +1,6 @@
 const express = require('express')
-const multer = require('multer')
 const router = express.Router()
+const multer = require('multer')
 const authentication = require('../middleware/authentication')
 const userCtrl = require('../app/controllers/userCtrl')
 const budgetCtrl = require('../app/controllers/budgetCtrl')
@@ -8,15 +8,26 @@ const categoryCtrl = require('../app/controllers/categoryCtrl')
 const expensesCtrl = require('../app/controllers/expensesCtrl')
 const monthCtrl = require('../app/controllers/monthCtrl')
 
+// To store image in server 
+// const storage = multer.diskStorage({  
+//     destination: (req,file,cb)=>{
+//         cb(null,'uploads')
+//     },
+//     filename:(req,file,cb)=>{
+//         cb(null,file.originalname)
+//     }
+// })
+// const upload = multer({storage})
+
 const upload = multer({dest:'uploads/'})
 
 //user API
 router.post('/api/user/register',userCtrl.register)
 router.post('/api/user/login',userCtrl.login)
 router.get('/api/user/data',authentication, userCtrl.data)
-router.put('/api/user/data',authentication,upload.single('image'),userCtrl.updateImage)
+router.put('/api/user/data',authentication,upload.single('image'),userCtrl.update)
 
-//Month API
+//Month API 
 router.post('/api/user/month',authentication, monthCtrl.create)
 router.get('/api/user/month', authentication, monthCtrl.list)
 router.get('/api/user/month/:id', authentication, monthCtrl.get)

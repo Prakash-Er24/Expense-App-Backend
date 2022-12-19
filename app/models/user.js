@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
-const Budget = require('./budget')
 const { isEmail } = validator
 const { Schema } = mongoose
 
@@ -35,7 +34,8 @@ const userSchema = new Schema({
         }
     },
     img:{
-        type:String
+        data:Buffer,
+        contentType:String
     }
 },{timestamps:true})
 

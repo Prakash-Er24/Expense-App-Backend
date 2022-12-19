@@ -76,7 +76,7 @@ module.exports.list = (req,res) => {
             const data = expenses.map(ele=>{
                 if(ele.category.isdeleted)
                 {
-                    ele.category.name='Deleted'
+                    ele.category.name='Uncategorized'
                     return ele
                 } 
                 else{

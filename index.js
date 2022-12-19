@@ -1,17 +1,16 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-app.use(express.json())
-app.use(cors())
-
-app.use('/uploads',express.static('uploads'))
+const configureDb = require('./config/database')
+const router = require('./config/routes')
 require('dotenv').config()
 const port = 3210
 
-const configureDb = require('./config/database')
 configureDb()
-const router = require('./config/routes')
+app.use(express.json())
+app.use(cors())
 app.use(router)
+app.use('/uploads',express.static('uploads'))
 
 app.listen(port,()=>{
     console.log('server is running on port',port)
